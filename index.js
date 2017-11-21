@@ -1,8 +1,16 @@
 const request = require("request");
 const config = require('./config.json');
+const telegramBot = require('node-telegram-bot-api');
 
-request('http://google.com',function(error,response,body){
-    //console.log('error:', error); // Print the error if one occurred
-    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-    //console.log('body:', body); // Print the HTML for the Google homepage.
+let bot = new telegramBot(config.token, {polling: true});
+
+bot.onText(/\/test/, function (msg, match) {
+    let fromId = msg.from.id;
+    let resp = match[1];
+    request.get(config.site).on("response", function(response){
+        if(response.statusCode!==200)
+            bot.sendMessage(fromId, "Bad not works!!!");
+        else
+            bot.sendMessage(fromId, 'All is well!!');
+    }); 
 });
