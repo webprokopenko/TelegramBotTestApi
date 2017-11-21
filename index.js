@@ -1,4 +1,5 @@
 const request = require("request");
+const config = require('./config.json');
 
 request('http://google.com',function(error,response,body){
     //console.log('error:', error); // Print the error if one occurred
