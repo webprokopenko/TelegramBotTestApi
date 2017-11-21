@@ -1,3 +1,9 @@
 {
-    "site": "https://google.com"
+    "site": "https://google.com",
+    "token": "480076030:AAGEKEl0je-D7hkLu1KrBbCCHA1gWTfM92E",
+    "db":{
+        "url":"localhost:27017/ethertransactions",
+        "urlTX":"localhost:27017/ethertransactions"
+    },
+    "timeRepeatTest": "60000"
 }
