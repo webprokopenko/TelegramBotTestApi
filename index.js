@@ -3,6 +3,7 @@ const config = require('./config.json');
 const telegramBot = require('node-telegram-bot-api');
 
 let bot = new telegramBot(config.token, {polling: true});
+let users = [];
 
 bot.onText(/\/test/, function (msg, match) {
     let fromId = msg.from.id;
@@ -14,3 +15,18 @@ bot.onText(/\/test/, function (msg, match) {
             bot.sendMessage(fromId, 'All is well!!');
     }); 
 });
+
+bot.onText(/\/timetest/, function (msg, match) {
+    let fromId = msg.from.id;
+    let resp = match[1];
+    setInterval(()=>{
+        request.get(config.site).on("response", function(response){
+            if(response.statusCode!==200)
+                bot.sendMessage(fromId, "Bad not works!!!");
+        }); 
+    },config.timeRepeatTest);
+});
+
+
+
+
