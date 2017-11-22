@@ -1,4 +1,4 @@
-const config = require('./config.json');
+const config = require('./../config.json');
 const url = config.db.url;
 const db = require('monk')(url);
 const collection = db.get('ether_transactions');
@@ -19,4 +19,8 @@ function parseControl(countDoc){
                     return true;
             });
         });
+};
+module.exports = {
+    parseControl:parseControl,
+    getLastParse:getLastParse,
 }
