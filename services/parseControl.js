@@ -1,22 +1,22 @@
 const config = require('./../config.json');
 const url = config.db.url;
 const db = require('monk')(url);
-const collection = db.get('ether_transactions');
+const collection = db.get('test');
 
-function getLastParse(){
+function getLastParse(callback){
         db.then(()=>{
             collection.count({},function(error, count){
-            return count;
+                callback(count);
             });
         });
 };
-function parseControl(countDoc){
+function parseControl(countDoc, callback){
         db.then(()=>{
             collection.count({},function(error,count){
                 if(countDoc<=count)
-                    return false;
+                    callback(false);
                 else
-                    return true;
+                    callback(true);
             });
         });
 };
