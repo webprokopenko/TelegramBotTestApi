@@ -1,9 +1,9 @@
 {
-    "site": "https://google.com",
+    "site": "http://194.71.227.15:80/",
     "token": "480076030:AAGEKEl0je-D7hkLu1KrBbCCHA1gWTfM92E",
     "db":{
-        "url":"localhost:27017/ethertransactions",
-        "urlTX":"localhost:27017/ethertransactions"
+        "url":"localhost:27017/chat",
+        "urlTX":"localhost:27017/chat"
     },
     "timeRepeatTest": "60000"
 }
