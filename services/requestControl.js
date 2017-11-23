@@ -3,7 +3,7 @@ const config = require('./../config.json');
 const util = require('util')
 
 function testCreateAccount(callback) {
-    let address;
+    var address;
 
     request.post({
         headers: {'content-type' : 'application/x-www-form-urlencoded'},
@@ -16,11 +16,17 @@ function testCreateAccount(callback) {
         testCreateAccount.address = parsed.keyFile.address
         callback(null, true);
     }
-        
-
   });
 }; 
 
+function testGetBalance(address,callback){
+    request.get(config.UrlGetBalance + '/' + address).on("response", function(response){
+        if(response.statusCode==200)
+            callback(null,true);
+    }); 
+}
+
 module.exports = {
     testCreateAccount:testCreateAccount,
+    testGetBalance:testGetBalance
 }

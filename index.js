@@ -29,6 +29,11 @@ bot.onText(/\/timetest/, function (msg, match) {
         requestControl.testCreateAccount((error,bool)=>{
             if(error)
                 bot.sendMessage(fromId, "Create accounts don't work!!!");
+
+            requestControl.testGetBalance(requestControl.testCreateAccount.address,(error,bool)=>{
+                if(error !== null && bool !== true)
+                        bot.sendMessage(fromId, "Get balance don't work!!!");
+            });
         });
     },config.timeRepeatTest);
 });
