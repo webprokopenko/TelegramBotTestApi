@@ -1,5 +1,6 @@
 {
     "site": "http://194.71.227.15:80/",
+    "UrlCreateAccount":"http://194.71.227.15/api/v4.0/ETH/createAccount",
     "token": "480076030:AAGEKEl0je-D7hkLu1KrBbCCHA1gWTfM92E",
     "db":{
         "url":"localhost:27017/chat",
