@@ -1,0 +1,26 @@
+const request = require("request");
+const config = require('./../config.json');
+const util = require('util')
+
+function testCreateAccount(callback) {
+    let address;
+
+    request.post({
+        headers: {'content-type' : 'application/x-www-form-urlencoded'},
+        url:     config.UrlCreateAccount,
+        body:    "ps=somepass"
+    }, function(error, response, body){
+
+    if(!error && response.statusCode == 200){
+        parsed = JSON.parse(body);
+        testCreateAccount.address = parsed.keyFile.address
+        callback(null, true);
+    }
+        
+
+  });
+}; 
+
+module.exports = {
+    testCreateAccount:testCreateAccount,
+}
